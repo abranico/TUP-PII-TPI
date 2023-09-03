@@ -27,7 +27,7 @@ while respuesta != "salir":
             #completar
             print()
         elif int(opt) == 3:
-            #completar
+            bibloteca.registrar_nuevo_libro()
             print()
         elif int(opt) == 4:
             #completar

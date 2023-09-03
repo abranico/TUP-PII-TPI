@@ -13,9 +13,11 @@ def ejemplares_prestados():
     return None
 
 def registrar_nuevo_libro():
+    # Ejecuto la funcion del modulo libro.py
     nuevo_libro = l.nuevo_libro()
-    #completar
-    return None
+    # Si la funcion retorna el libro se agrega a la lista
+    if nuevo_libro != None:
+        libros.append(nuevo_libro)
 
 def eliminar_ejemplar_libro():
     #completar
