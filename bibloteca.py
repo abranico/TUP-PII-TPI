@@ -10,7 +10,13 @@ libros.append(l.libro3)
 
 
 def ejemplares_prestados():
-    # completar
+    for  libro in libros:
+        if libro["cant_ej_pr"]>0:
+            print(f"Titulo: {libro['titulo']}\nEjemplares prestados: {libro['cant_ej_pr']}\n")
+        else:
+            print(f"Titulo: {libro['titulo']}\nNingun ejemplar prestado\n")
+
+        
     return None
 
 
