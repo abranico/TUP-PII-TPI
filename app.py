@@ -24,7 +24,7 @@ while respuesta != "salir":
             bibloteca.prestar_ejemplar_libro()
             print()
         elif int(opt) == 2:
-            #completar
+            bibloteca.devolver_ejemplar_libro()
             print()
         elif int(opt) == 3:
             bibloteca.registrar_nuevo_libro()
