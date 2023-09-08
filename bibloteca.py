@@ -123,8 +123,3 @@ def devolver_ejemplar_libro():
              print("Todos los ejemplares están disponible.")
     else:
      print("Libro no encontrado.")
-
-
-def nuevo_libro():
-    # completar
-    return None
