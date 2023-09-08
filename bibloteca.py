@@ -12,13 +12,9 @@ libros.append(l.libro3)
 def ejemplares_prestados():
     for libro in libros:
         if libro["cant_ej_pr"] > 0:
-            print(
-                f"Titulo: {libro['titulo']}\nEjemplares prestados: {libro['cant_ej_pr']}\n"
-            )
+            print(f"Título: {libro['titulo']}\nEjemplares prestados: {libro['cant_ej_pr']}\n")
         else:
-            print(f"Titulo: {libro['titulo']}\nNingun ejemplar prestado\n")
-
-    return None
+            print(f"Título: {libro['titulo']}\nNingún ejemplar prestado\n")
 
 
 def registrar_nuevo_libro():
@@ -30,7 +26,8 @@ def registrar_nuevo_libro():
 
 
 def eliminar_ejemplar_libro():
-    codigo_libro = input("Ingrese codigo del libro: ")
+    codigo_libro = input("Ingrese código del libro: ")
+
     for i, libro in enumerate(libros):
         if libro.get("cod") == codigo_libro:
             encontrado = True
@@ -39,26 +36,23 @@ def eliminar_ejemplar_libro():
             break
         else:
             print("Libro inexistente.")
+
     if encontrado == True:
-        ejemplares_disponibles = (
-            libros[indice_libro]["cant_ej_ad"] - libros[indice_libro]["cant_ej_pr"]
-        )
+        ejemplares_disponibles = (libros[indice_libro]["cant_ej_ad"] - libros[indice_libro]["cant_ej_pr"])
+
         if ejemplares_disponibles > 0:
-            confirmar_prestamo = input(
-                "¿Desea confirmar la eliminacion de 1 ejemplar de este libro? (Si/No) "
-            )
+            confirmar_prestamo = input("¿Confirma la eliminación de un ejemplar de este libro? (Si/No) ")
             confirmar_prestamo = confirmar_prestamo.upper()
+
             if confirmar_prestamo == "SI":
                 libros[indice_libro]["cant_ej_ad"] -= 1
-                print("Ejemplar eliminado con exito.")
+                print("Ejemplar eliminado con éxito.")
             else:
-                print("Eliminacion de ejemplar cancelado.")
-
-    return None
+                print("Eliminación de ejemplar cancelado.")
 
 
 def prestar_ejemplar_libro():
-    codigo_libro = input("ingrese el codigo del libro: ")
+    codigo_libro = input("Ingrese el código del libro: ")
     indice_libro = int()
     encontrado = False
 
@@ -71,26 +65,23 @@ def prestar_ejemplar_libro():
     if encontrado == True:
         titulo = libros[indice_libro]["titulo"]
         autor = libros[indice_libro]["autor"]
-        ejemplares_disponibles = (
-            libros[indice_libro]["cant_ej_ad"] - libros[indice_libro]["cant_ej_pr"]
-        )
-        print(
-            f"""
-              Titulo: {titulo }
+        ejemplares_disponibles = (libros[indice_libro]["cant_ej_ad"] - libros[indice_libro]["cant_ej_pr"])
+
+        print(f"""
+              Título: {titulo }
               Autor: {autor}
               Ejemplares disponibles: {ejemplares_disponibles}
-              """
-        )
+              """)
+
         if ejemplares_disponibles > 0:
-            confirmar_prestamo = input(
-                "¿Desea confirmar el prestamo de este libro? (Si/No) "
-            )
+            confirmar_prestamo = input("¿Confirma el préstamo de este libro? (Si/No) ")
             confirmar_prestamo = confirmar_prestamo.upper()
+
             if confirmar_prestamo == "SI":
                 libros[indice_libro]["cant_ej_pr"] += 1
-                print("Prestamo realizado con exito.")
+                print("Préstamo realizado con éxito.")
             else:
-                print("Prestamo cancelado.")
+                print("Préstamo cancelado.")
         else:
             print("No quedan mas ejemplares disponibles.")
     else:
@@ -98,7 +89,7 @@ def prestar_ejemplar_libro():
 
 
 def devolver_ejemplar_libro():
-    codigo_libro = input("ingrese el codigo del libro: ")
+    codigo_libro = input("Ingrese el código del libro: ")
     indice_libro = int()
     encontrado = False
 
@@ -109,32 +100,29 @@ def devolver_ejemplar_libro():
             break
 
     if encontrado == True:
-        titulo = libros[indice_libro]["titulo"]
-        autor = libros[indice_libro]["autor"]
-        ejemplares_disponibles = (
-            libros[indice_libro]["cant_ej_ad"] - libros[indice_libro]["cant_ej_pr"]
-        )
-        print(
-            f"""
-              Titulo: {titulo }
+            titulo = libros[indice_libro]["titulo"]
+            autor = libros[indice_libro]["autor"]
+            ejemplares_disponibles = (libros[indice_libro]["cant_ej_ad"] - libros[indice_libro]["cant_ej_pr"])
+
+            print(f"""
+              Título: {titulo }
               Autor: {autor}
               Ejemplares disponibles: {ejemplares_disponibles}
-              """
-        )
-        if ejemplares_disponibles > 0:
-            confirmar_prestamo = input(
-                "¿Desea confirmar la devolucion de este libro? (Si/No)"
-            )
-            confirmar_prestamo = confirmar_prestamo.upper()
-            if confirmar_prestamo == "SI":
-                libros[indice_libro]["cant_ej_pr"] -= 1
-                print("Devolucion realizada con exito.")
+              """)
+            
+            if libro["cant_ej_pr"] > 0:
+                confirmar_devolucion = input("¿Confirma la devolución de este libro? (Si/No) ")
+                confirmar_devolucion = confirmar_devolucion.upper()
+
+                if confirmar_devolucion == "SI":
+                    libros[indice_libro]["cant_ej_pr"] -= 1
+                    print("Devolución realizada con éxito.")
+                else:
+                 print("Devolución cancelada.")
             else:
-                print("Devolucion cancelada.")
-        else:
-            print("No hay ejemplares prestados de este libro.")
+             print("Todos los ejemplares están disponible.")
     else:
-        print("Libro no encontrado.")
+     print("Libro no encontrado.")
 
 
 def nuevo_libro():
